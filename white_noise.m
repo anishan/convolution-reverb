@@ -18,7 +18,7 @@ FRxx = [];
 H = [];
 h = [];
 
-for i=1:10
+for i=1:1
     whitenoise = [whitenoise, [wgn(10000,1,0)]];
     sound(whitenoise(:,end));
     recordblocking(recObj, 3);
