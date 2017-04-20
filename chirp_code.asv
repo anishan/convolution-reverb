@@ -1,6 +1,12 @@
 fs = 48000;
-t = 0:(1/fs):3-(1/fs);%0:1/fs:3;
-s = chirp(t,100,1,1000);
+duration = 3;
+f_min = 20;
+f_max = 20000;
+t = 0 : (1/fs) : duration - (1/fs);
+s = chirp(t, f_min, 1, 1000);
+y -y0 = m(x - x0)
+20000-10 = m *duration
+m = (20000 - 20) / duration
 
 recObj = audiorecorder(48000,16,1);
 z = zeros(300);
@@ -29,14 +35,31 @@ Hjw = Yjw ./ Xjw;
 ht = ifft(Hjw);
 
 figure(2)
+clf
+hold on
 magXjw = abs(Xjw);
 magYjw = abs(Yjw);
 magHjw = abs(Hjw);
-plot(linspace(0,0.36,144000*0.36/(2*pi)),ifft(magXjw(1:144000*0.36/(2*pi))))
+plot(linspace(0,0.36,144000*0.36/(2*pi)),magXjw(1:144000*0.36/(2*pi)))
 hold on
-plot(linspace(0,0.36,144000*0.36/(2*pi)),ifft(magYjw(1:144000*0.36/(2*pi))))
-plot(linspace(0,0.36,144000*0.36/(2*pi)),ifft(magHjw(1:144000*0.36/(2*pi))))
+plot(linspace(0,0.36,144000*0.36/(2*pi)),magYjw(1:144000*0.36/(2*pi)))
+plot(linspace(0,0.36,144000*0.36/(2*pi)),magHjw(1:144000*0.36/(2*pi))*1000)
+ylim([0 1000])
 
 figure(3)
+clf
 space_ht = ifft(Hjw);
-plot(abs(space_ht(1:144000*0.36/(2*pi))))
+plot(t(1:144000*0.36/(2*pi)), abs(space_ht(1:144000*0.36/(2*pi))))
+
+
+[dove,Fs_dove] = audioread('dove.wav');
+dove = dove(:,1);
+z = zeros(100000000,1);
+ir = [space_ht; z];
+Irjw = fft(ir(1:length(dove)));
+Dovejw = fft(dove);
+aYjw = Irjw .* Dovejw;
+
+yt_libdove = abs(ifft(aYjw));
+
+sound(yt_libdove, Fs_dove)

@@ -1,0 +1,22 @@
+[ir,Fs_ir] = audioread('spokane_womans_club_ir.wav');
+[dove,Fs_dove] = audioread('dove.wav');
+if(length(
+dove = dove(:,1);
+z = zeros(length(dove) - length(ir), 1);
+ir = [ir(:, 1); z(:, 1)];
+clf
+plot(ir)
+hold on
+plot(dove(1 : length(ir)));
+
+Irjw = fft(ir);
+Dovejw = fft(dove);
+Yjw = Irjw .* Dovejw;
+% figure
+% plot(Yjw)
+
+yt = ifft(Yjw);
+
+
+sound(dove(70000:100000), Fs_dove)
+sound(yt, Fs_dove)
