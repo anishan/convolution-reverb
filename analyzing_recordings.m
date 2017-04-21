@@ -10,7 +10,7 @@ s = [s, z(1,:)]; %pad with half a second of zeroes at the end
 t = [t, t(end):(1/fs):t(end)+0.5-(1/fs)];
 
 % Load recordings 
-[y_record,Fs_record] = audioread('recordings420/ZOOM0011.wav');
+[y_record,Fs_record] = audioread('recordings420/ZOOM0018.wav');
 y_record = y_record(1:12.5*Fs_record); % cut off the recording after 12.5 sec
 
 figure(1)
@@ -25,9 +25,19 @@ plot(t_record, y_record)
 Xjw = fft(s.');
 Yjw = fft(y_record);
 Hjw = Yjw ./ Xjw;
-idx_fmax = (length(Xjw)/2-1)/(length(Xjw));
-Hjw(idx_fmax:length(Hjw)/2+1) = 0;
-Hjw(length(Hjw)/2+1 : length(Hjw)/2+1 + idx_fmax) = 0;
+idx_fmax = f_max * (length(Hjw) / 2) * 2 / fs;
+
+% Set freq higher than fmax to 0, must do so for both spectra
+for i = idx_fmax : length(Hjw) - idx_fmax
+    if(mod(i, 100) == 0)
+        disp(i);
+    end
+    Hjw(i) = 0;
+end
+figure;
+plot(abs(Hjw))
+% Hjw(:) = 0;
+% Hjw(length(Hjw)/2+1 : length(Hjw)/2+1 + idx_fmax) = 0;
 
 figure(2)
 clf
@@ -41,7 +51,7 @@ magHjw = magHjw(1:length(magHjw)/2+1);
 % interval = length(magXjw)*f_cutoff/(2*pi);
 % freq_hz = 1 ./ t;
 
-f = fs*(0:idx_fmax);
+f = linspace(0, f_max, length(magXjw));
 
 hold on
 % plot(linspace(0,f_cutoff,interval),magXjw(1:interval))
@@ -62,14 +72,14 @@ space_ht = ifft(Hjw);
 plot(t, abs(space_ht))
 
 % Convolution
-[dove,Fs_dove] = audioread('dove.wav');
-dove = dove(:,1);
-z = zeros(10000000,1);
-ir = [space_ht; z];
-Irjw = fft(ir(1:length(dove)));
-Dovejw = fft(dove);
-aYjw = Irjw .* Dovejw;
-
-yt_libdove = abs(ifft(aYjw));
-
-sound(yt_libdove, Fs_dove)
+% [dove,Fs_dove] = audioread('dove.wav');
+% dove = dove(:,1);
+% z = zeros(10000000,1);
+% ir = [space_ht; z];
+% Irjw = fft(ir(1:length(dove)));
+% Dovejw = fft(dove);
+% aYjw = Irjw .* Dovejw;
+% 
+% yt_libdove = abs(ifft(aYjw));
+% 
+% sound(yt_libdove, Fs_dove)
