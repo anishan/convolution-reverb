@@ -1,19 +1,24 @@
-[ir,Fs_ir] = audioread('library-athens.wav');
+[ir,Fs_ir] = audioread('lib-stair.wav');
 [dove,Fs_dove] = audioread('dove.wav');
 dove = dove(:,1);
+z = zeros(100000000,1);
+ir = ir(:,1);
+ir = [libraryht; z];
 clf
-plot(ir)
+plot(dove)
 hold on
-plot(dove(70000:100000))
+plot(ir(1:length(dove)))
 
-Irjw = fft(ir(1:30001));
-Dovejw = fft(dove(70000:100000));
-Yjw = Irjw .* Dovejw;
+
+Irjw = fft(ir(1:length(dove)));
+% Irjw = fft(libraryht);
+Dovejw = fft(dove);
+aYjw = Irjw .* Dovejw;
 % figure
 % plot(Yjw)
 
-yt = ifft(Yjw);
+yt_libdove = abs(ifft(aYjw));
 
 
-sound(dove(70000:100000), Fs_dove)
-sound(yt, Fs_dove)
+% sound(dove(70000:100000), Fs_dove)
+sound(yt_libdove, Fs_dove)
