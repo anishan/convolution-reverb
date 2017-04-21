@@ -1,0 +1,27 @@
+ZOOM_0001: AC Stairs sampled at 48000Hz, microphone at a distance from the speakers, facing the stairs
+ZOOM_0002: AC Stairs sampled at 44100Hz, microphone at a distance from the speakers, facing the stairs
+ZOOM_0003: Cardboard tube sampled at 44100Hz, speaker and microphone on the same side, facing into the tube
+ZOOM_0004: Cardboard tube sampled at 44100Hz, speaker and microphone on the opposite side, facing into the tube
+ZOOM_0005: Wide PVC Pipe sampled at 44100Hz, speaker and microphone on the opposite side, facing into the tube
+ZOOM_0006: Failed attempt
+ZOOM_0007: Thin PVC Pipe sampled at 44100Hz, speaker and microphone on the opposite side, facing into the tube
+ZOOM_0008: Thin PVC Pipe sampled at 44100Hz, speaker and microphone on the same side, facing into the tube, receiver blocking open side
+ZOOM_0009: Plastic pumpkin sampled at 44100Hz, opening upwards, speaker facing into opening, microphone on the bottom, hand pressing down on speaker
+ZOOM_0010: Plastic pumpkin sampled at 44100Hz, opening downwards, speaker upright in opening, microphone on the rim facing speaker, hand pressing down on bottom
+ZOOM_0011: Plastic pumpkin sampled at 44100Hz, opening downwards, speaker upright in opening, microphone on the rim facing speaker, no hand
+ZOOM_0012: Failed attempt
+ZOOM_0013: Plastic sphere sampled at 44100Hz, opening downwards, speaker upright in opening, microphone on the rim facing away from speaker
+ZOOM_0014: Plastic sphere sampled at 44100Hz, opening downwards, speaker upright in opening, microphone on the rim facing speaker
+ZOOM_0015: Plastic sphere sampled at 44100Hz, opening downwards, speaker upright in opening, microphone on top of speaker facing same direction
+ZOOM_0016: AC Column Tunnel, MH side sampled at 44100Hz, speaker quiet facing into tunnel, microphone 62 inches away facing into tunnel
+ZOOM_0017: AC Column Tunnel, MH side sampled at 44100Hz, speaker medium facing into tunnel, microphone 62 inches away facing into tunnel
+ZOOM_0018: AC Column Tunnel, MH side sampled at 44100Hz, speaker loud facing into tunnel, microphone next to speaker facing into tunnel
+ZOOM_0019: AC Column Tunnel, MH side sampled at 44100Hz, speaker loud facing into tunnel, microphone next to speaker facing into tunnel, with people talking down the tunnel
+ZOOM_0020: Center of Oval sampled at 44100Hz, speaker loud facing CC, microphone next to speaker loud facing same way
+ZOOM_0021: Center of Oval sampled at 44100Hz, speaker medium facing CC, microphone next to speaker facing same way
+ZOOM_0022: Center of Oval sampled at 44100Hz, speaker quiet facing CC, microphone next to speaker facing same way
+ZOOM_0023: Center of Oval sampled at 44100Hz, speaker medium facing CC, microphone next to speaker facing same way
+ZOOM_0024: Auditorium sampled at 44100Hz, speaker medium facing audience, microphone next to speaker facing same way
+ZOOM_0025: Auditorium sampled at 44100Hz, speaker medium facing audience, microphone next to speaker facing same way
+
+Around Take 20, strange feedback was heard in the chirp. It may have been present earlier, but definitely not before Take 16.
