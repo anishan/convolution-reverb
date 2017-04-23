@@ -10,7 +10,7 @@ s = [s, z(1,:)]; %pad with half a second of zeroes at the end
 t = [t, t(end):(1/fs):t(end)+0.5-(1/fs)];
 
 % Load recordings 
-[y_record,Fs_record] = audioread('recordings420/ZOOM0003.wav');
+[y_record,Fs_record] = audioread('recordings420/ZOOM0001.wav');
 y_record = y_record(1:12.5*Fs_record); % cut off the recording after 12.5 sec
 
 figure(1)
@@ -29,6 +29,9 @@ idx_fmax = f_max * (length(Hjw) / 2) * 2 / fs;
 
 % Set freq higher than fmax to 0, must do so for both spectra
 for i = idx_fmax : length(Hjw) - idx_fmax
+%     if(mod(i, 100) == 0)
+%         disp(i);
+%     end
     Hjw(i) = 0;
 end
 figure;
@@ -44,6 +47,9 @@ magYjw = abs(Yjw);
 magYjw = magYjw(1:length(magYjw)/2+1);
 magHjw = abs(Hjw);
 magHjw = magHjw(1:length(magHjw)/2+1);
+% f_cutoff = f_max;
+% interval = length(magXjw)*f_cutoff/(2*pi);
+% freq_hz = 1 ./ t;
 
 f = linspace(0, f_max, length(magXjw));
 
@@ -58,8 +64,8 @@ figure(3)
 clf
 % Find impulse response in time
 space_ht = ifft(Hjw);
+% filename = 'ir_staircase.wav';
 % sound(real(space_ht) .* 50, fs);
-% filename = 'ir_thin_pvc_sameside.wav';
 % audiowrite(filename, space_ht.*50, fs);
 plot(t, abs(space_ht)*10)
 % 
