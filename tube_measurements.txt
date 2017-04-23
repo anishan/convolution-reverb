@@ -1,0 +1,11 @@
+cardboard tube
+length: 1.39m
+diameter: 0.85m
+
+long PVC tube
+length: 1.52m
+diameter: 0.025m
+
+short PVC tube
+length: 0.865m
+diameter: 0.06m
