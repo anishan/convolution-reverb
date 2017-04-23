@@ -10,7 +10,7 @@ s = [s, z(1,:)]; %pad with half a second of zeroes at the end
 t = [t, t(end):(1/fs):t(end)+0.5-(1/fs)];
 
 % Load recordings 
-[y_record,Fs_record] = audioread('recordings420/ZOOM0018.wav');
+[y_record,Fs_record] = audioread('recordings420/ZOOM0002.wav');
 y_record = y_record(1:12.5*Fs_record); % cut off the recording after 12.5 sec
 
 figure(1)
@@ -24,7 +24,7 @@ plot(t_record, y_record)
 % Fourier Transforms
 Xjw = fft(s.');
 Yjw = fft(y_record);
-Hjw = Yjw ./ Xjw;
+Hjw = Yjw ./ Xjw * 50;
 idx_fmax = f_max * (length(Hjw) / 2) * 2 / fs;
 
 % Set freq higher than fmax to 0, must do so for both spectra
@@ -72,14 +72,14 @@ space_ht = ifft(Hjw);
 plot(t, abs(space_ht))
 
 % Convolution
-% [dove,Fs_dove] = audioread('dove.wav');
-% dove = dove(:,1);
-% z = zeros(10000000,1);
-% ir = [space_ht; z];
-% Irjw = fft(ir(1:length(dove)));
-% Dovejw = fft(dove);
-% aYjw = Irjw .* Dovejw;
-% 
-% yt_libdove = abs(ifft(aYjw));
-% 
-% sound(yt_libdove, Fs_dove)
+[dove,Fs_dove] = audioread('elDelitoMayorGoogle.wav');
+dove = dove(:,1);
+z = zeros(10000000,1);
+ir = [space_ht; z];
+Irjw = fft(ir(1:length(dove)));
+Dovejw = fft(dove);
+aYjw = Irjw .* Dovejw;
+
+yt_libdove = abs(ifft(aYjw));
+
+sound(yt_libdove, Fs_dove)
