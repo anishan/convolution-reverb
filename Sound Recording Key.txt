@@ -24,4 +24,4 @@ ZOOM_0023: Center of Oval sampled at 44100Hz, speaker medium facing CC, micropho
 ZOOM_0024: Auditorium sampled at 44100Hz, speaker medium facing audience, microphone next to speaker facing same way
 ZOOM_0025: Auditorium sampled at 44100Hz, speaker medium facing audience, microphone next to speaker facing same way
 
-Around Take 20, strange feedback was heard in the chirp. It may have been present earlier, but definitely not before Take 16.
+Around Take 16, strange feedback was heard in the chirp. It may have been present earlier, but definitely not before Take 16.
