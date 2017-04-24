@@ -2,11 +2,11 @@ im = imread('boston_skyline.png');
 im_grayscale = rgb2gray(im);
 im_bw = imbinarize(im_grayscale);
 figure(1);
-imshow(im_bw);
+% imshow(im_bw);
 [m, n] = size(im_bw);
 fs = 48000;
 fmax = 10500;
-f1 = 4000;
+f1 = 100;
 f2 = f1 + n;
 scaling_factor = round((f2 - f1) / n);
 skyline = zeros(1, f2 * scaling_factor);
@@ -32,14 +32,28 @@ figure(3)
 plot(abs(skyline_ht))
 % sound(abs(skyline_ht))
 
-[dove,Fs_dove] = audioread('dove.wav');
-dove = dove(:,1);
-z = zeros(10000000,1);
-ir = [skyline_ht.'; z];
-Irjw = fft(ir(1:length(dove)));
+[dove,Fs_dove] = audioread('delito_isabella.mp3');
+dove = dove(:,1); % mono channel
+ir = skyline_ht.';
+
+if(length(dove) > length(skyline_ht))
+    ir = [ir; zeros(length(dove) - length(skyline_ht), 1)];
+else
+    dove = [dove; zeros(length(skyline_ht) - length(dove), 1)];
+end
+
+% Fourier Transform
+Irjw = fft(ir);
 Dovejw = fft(dove);
 aYjw = Irjw .* Dovejw;
+yt_dove = ifft(aYjw);
 
-yt_libdove = ifft(aYjw);
+% Plot response in space in time
+figure(4)
+t_dove = 0 : (1/Fs_dove) : (length(dove) - 1) / Fs_dove;
+plot(t_dove, real(yt_dove))
 
-sound(real(yt_libdove), Fs_dove)
+% sound(real(yt_dove), Fs_dove)
+% filename = 'delito_boston.wav';
+% audiowrite(filename,yt_dove,Fs_dove);
+% sound(real(yt_dove), Fs_dove)

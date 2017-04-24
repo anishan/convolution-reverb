@@ -5,8 +5,9 @@ z = zeros(100000000,1);
 ir = ir(:,1);
 ir = [ir; z];
 clf
-t = 0 : (1/Fs_dove) : length(dove)/Fs_dove - 1 / Fs_dove;
+t = 0 : (1/Fs_dove) : (length(dove) - 1)/Fs_dove;
 plot(t, dove)
+
 % hold on
 % plot(ir(1:length(dove)))
 % 
