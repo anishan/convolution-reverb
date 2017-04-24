@@ -1,4 +1,4 @@
-im = imread('new_york_skyline.png');
+im = imread('boston_skyline.png');
 im_grayscale = rgb2gray(im);
 im_bw = imbinarize(im_grayscale);
 figure(1);
@@ -40,6 +40,6 @@ Irjw = fft(ir(1:length(dove)));
 Dovejw = fft(dove);
 aYjw = Irjw .* Dovejw;
 
-yt_libdove = abs(ifft(aYjw));
+yt_libdove = ifft(aYjw);
 
-sound(yt_libdove, Fs_dove)
+sound(real(yt_libdove), Fs_dove)

@@ -10,7 +10,7 @@ s = [s, z(1,:)]; %pad with half a second of zeroes at the end
 t = [t, t(end):(1/fs):t(end)+0.5-(1/fs)];
 
 % Load recordings 
-[y_record,Fs_record] = audioread('recordings420/ZOOM0003.wav');
+[y_record,Fs_record] = audioread('recordings420/ZOOM0001.wav');
 y_record = y_record(1:12.5*Fs_record); % cut off the recording after 12.5 sec
 
 figure(1)
@@ -51,7 +51,7 @@ hold on
 % plot(linspace(0,f_cutoff,interval),magXjw(1:interval))
 plot(f,magXjw)
 plot(f,magYjw)
-plot(f,magHjw*1000)
+plot(f,magHjw*10)
 ylim([0 1000])
 
 figure(3)

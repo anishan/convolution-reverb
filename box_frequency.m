@@ -1,7 +1,7 @@
-% f1 = 300; % space ship
-% f2 = 10000;
-f1 = 5000; % guitar pros failing...
+f1 = 300; % space ship
 f2 = 10000;
+% f1 = 5000; % guitar pros failing...
+% f2 = 10000;
 fs = 48000;
 fmax = 10500;
 n = fs / 2 + 100;
@@ -27,6 +27,6 @@ Irjw = fft(ir(1:length(dove)));
 Dovejw = fft(dove);
 aYjw = Irjw .* Dovejw;
 
-yt_libdove = abs(ifft(aYjw));
+yt_libdove = ifft(aYjw);
 
-sound(yt_libdove, Fs_dove)
+% sound(real(yt_libdove), Fs_dove)
