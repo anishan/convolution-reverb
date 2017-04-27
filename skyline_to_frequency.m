@@ -1,4 +1,4 @@
-im = imread('boston_skyline.png');
+im = imread('paris_skyline.png');
 im_grayscale = rgb2gray(im);
 im_bw = imbinarize(im_grayscale);
 figure(1);
@@ -32,7 +32,7 @@ figure(3)
 plot(abs(skyline_ht))
 % sound(abs(skyline_ht))
 
-[dove,Fs_dove] = audioread('delito_isabella.mp3');
+[dove,Fs_dove] = audioread('universe_jenna.mp3');
 dove = dove(:,1); % mono channel
 ir = skyline_ht.';
 
@@ -53,7 +53,7 @@ figure(4)
 t_dove = 0 : (1/Fs_dove) : (length(dove) - 1) / Fs_dove;
 plot(t_dove, real(yt_dove))
 
-% sound(real(yt_dove), Fs_dove)
+sound(real(yt_dove), Fs_dove)
 % filename = 'delito_boston.wav';
 % audiowrite(filename,yt_dove,Fs_dove);
 % sound(real(yt_dove), Fs_dove)

@@ -64,21 +64,21 @@ figure(3)
 clf;
 plot(t, real(space_ht)*10)
 
-% % % Convolution
-% [dove,Fs_dove] = audioread('delito_isabella.mp3');
-% dove = dove(:,1); % mono channel
-% ir = space_ht;
-% if(length(dove) > length(space_ht))
-%     ir = [space_ht; zeros(length(dove) - length(space_ht), 1)];
-% else
-%     dove = [dove; zeros(length(space_ht) - length(dove), 1)];
-% end
-% 
-% % Fourier Transform
-% Irjw = fft(ir);
-% Dovejw = fft(dove);
-% aYjw = Irjw .* Dovejw;
-% yt_dove = ifft(aYjw);
+% % Convolution
+[dove,Fs_dove] = audioread('universe_alice.mp3');
+dove = dove(:,1); % mono channel
+ir = space_ht;
+if(length(dove) > length(space_ht))
+    ir = [space_ht; zeros(length(dove) - length(space_ht), 1)];
+else
+    dove = [dove; zeros(length(space_ht) - length(dove), 1)];
+end
+
+% Fourier Transform
+Irjw = fft(ir);
+Dovejw = fft(dove);
+aYjw = Irjw .* Dovejw;
+yt_dove = ifft(aYjw);
 % 
 % % Plot response in space in time
 % figure(4)
@@ -88,4 +88,4 @@ plot(t, real(space_ht)*10)
 % % Save result
 % filename = 'delito_staircase.wav';
 % audiowrite(filename,yt_dove,Fs_dove);
-% sound(real(yt_dove), Fs_dove)
+sound(real(yt_dove), Fs_dove)
