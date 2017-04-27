@@ -10,7 +10,7 @@ s = [s, z]; %pad with half a second of zeroes at the end
 t = [t, t(end) : (1/fs) : t(end) + 0.5 - (1/fs)];
 
 % Load recordings 
-[y_record, Fs_record] = audioread('recordings420/ZOOM0021.wav');
+[y_record, Fs_record] = audioread('recordings420/ZOOM0001.wav');
 y_record = y_record(1 : 12.5 * Fs_record); % cut off the recording after 12.5 sec
 
 figure(1)
@@ -65,7 +65,7 @@ clf;
 plot(t, real(space_ht)*10)
 
 % % Convolution
-[dove,Fs_dove] = audioread('universe_alice.mp3');
+[dove,Fs_dove] = audioread('delito_isabella.mp3');
 dove = dove(:,1); % mono channel
 ir = space_ht;
 if(length(dove) > length(space_ht))
@@ -86,6 +86,6 @@ yt_dove = ifft(aYjw);
 % plot(t_dove, real(yt_dove))
 % 
 % % Save result
-% filename = 'delito_staircase.wav';
-% audiowrite(filename,yt_dove,Fs_dove);
+filename = 'delito_staircase_loud.wav';
+audiowrite(filename,yt_dove.*5,Fs_dove);
 sound(real(yt_dove), Fs_dove)

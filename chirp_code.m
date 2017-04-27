@@ -1,12 +1,12 @@
 fs = 44100;
 duration = 4;
 f_min = 20;
-f_max = 3000;
+f_max = 500;
 t = 0 : (1/fs) : duration - (1/fs);
 s = chirp(t, f_min, 1, (f_max - f_min) / duration + f_min);
 sound(s, fs);
 filename = 'chirp.wav';
-audiowrite(filename, space_ht, fs);
+audiowrite(filename, s, fs);
 
 % recObj = audiorecorder(fs,16,1);
 % z = zeros(300);
