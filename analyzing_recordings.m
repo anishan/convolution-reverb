@@ -10,7 +10,7 @@ s = [s, z]; %pad with half a second of zeroes at the end
 t = [t, t(end) : (1/fs) : t(end) + 0.5 - (1/fs)];
 
 % Load recordings 
-[y_record, Fs_record] = audioread('recordings420/ZOOM0005.wav');
+[y_record, Fs_record] = audioread('recordings420/ZOOM0021.wav');
 y_record = y_record(1 : 12.5 * Fs_record); % cut off the recording after 12.5 sec
 
 figure(1)
@@ -56,7 +56,7 @@ ylim([0 1000])
 space_ht = ifft(Hjw);
 % Save impulse response recording
 % sound(real(space_ht) .* 50, fs);
-% filename = 'ir_thin_pvc_sameside.wav';
+% filename = 'oval_21.wav';
 % audiowrite(filename, space_ht.*50, fs);
 
 % Plot impulser response in time
